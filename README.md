@@ -4,8 +4,8 @@ Página de enlaces oficial móvil y de alta conversión inspirada en el diseño 
 
 ## 🌐 Visualización en Vivo (Para ti y el Cliente)
 
-- **Enlace público en vivo (GitHub Pages):** [https://adrianvignolo.github.io/Mat-links/](https://adrianvignolo.github.io/Mat-links/)
-- **Repositorio en GitHub:** [https://github.com/adrianvignolo/Mat-links](https://github.com/adrianvignolo/Mat-links)
+- **Enlace público en vivo (GitHub Pages):** [https://adrianvignolo.github.io/materialesconstruy-links/](https://adrianvignolo.github.io/materialesconstruy-links/)
+- **Repositorio en GitHub:** [https://github.com/adrianvignolo/materialesconstruy-links](https://github.com/adrianvignolo/materialesconstruy-links)
 
 ## 🚀 Acceso en Servidor Local (Wamp64)
 
