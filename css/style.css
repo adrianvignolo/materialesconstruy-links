@@ -340,6 +340,20 @@ body {
   100% { transform: scale(0.9); opacity: 0; }
 }
 
+.status-pill.status-closed {
+  color: #9a3412;
+  border-color: #fed7aa;
+  background: #fffaf0;
+}
+
+.status-pill.status-closed .status-dot-pulse {
+  background-color: #f59e0b;
+}
+
+.status-pill.status-closed .status-dot-pulse::after {
+  background-color: rgba(245, 158, 11, 0.4);
+}
+
 /* Barra de Redes Sociales y Accesos Directos */
 .social-buttons-bar {
   display: flex;

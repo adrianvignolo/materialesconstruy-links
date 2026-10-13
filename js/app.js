@@ -379,7 +379,7 @@ function escapeHtml(str) {
 
 /**
  * ============================================================================
- * HORARIO DE ATENCIÓN EN VIVO
+ * HORARIO DE ATENCIÓN EN VIVO (HORA OFICIAL DE VENEZUELA - UTC-4)
  * ============================================================================
  */
 function initBusinessStatus(scheduleConfig) {
@@ -393,31 +393,62 @@ function initBusinessStatus(scheduleConfig) {
 
   try {
     const now = new Date();
-    const options = { timeZone: timezone, hour12: false, weekday: 'short', hour: 'numeric', minute: 'numeric' };
-    const formatter = new Intl.DateTimeFormat('es-VE', options);
+    // Obtener día de la semana y hora exacta en zona horaria de Venezuela (America/Caracas)
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone,
+      weekday: 'short',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: false
+    });
     const parts = formatter.formatToParts(now);
     
     let hour = 0;
-    let weekdayStr = '';
+    let minute = 0;
+    let weekday = '';
     parts.forEach(p => {
       if (p.type === 'hour') hour = parseInt(p.value, 10);
-      if (p.type === 'weekday') weekdayStr = p.value.toLowerCase();
+      if (p.type === 'minute') minute = parseInt(p.value, 10);
+      if (p.type === 'weekday') weekday = p.value.toLowerCase();
     });
 
-    const isWeekend = weekdayStr.startsWith('s') || weekdayStr.startsWith('d');
-    const isOpenHours = hour >= openHour && hour < closeHour;
+    const dayMap = { 'mon': 1, 'tue': 2, 'wed': 3, 'thu': 4, 'fri': 5, 'sat': 6, 'sun': 0 };
+    const dayNum = dayMap[weekday] ?? 1;
 
-    if (!isWeekend && isOpenHours) {
-      statusText.textContent = `Abierto Ahora · Cierra ${closeHour > 12 ? (closeHour - 12) + ':00 PM' : closeHour + ':00 AM'}`;
+    const currentMinutes = hour * 60 + minute;
+    const openMinutes = openHour * 60;
+    const closeMinutes = closeHour * 60;
+
+    const isWeekday = dayNum >= 1 && dayNum <= 5;
+    const isOpen = isWeekday && currentMinutes >= openMinutes && currentMinutes < closeMinutes;
+
+    const openTimeStr = openHour > 12 ? (openHour - 12) + ':00 PM' : openHour + ':00 AM';
+    const closeTimeStr = closeHour > 12 ? (closeHour - 12) + ':00 PM' : closeHour + ':00 AM';
+
+    const dot = statusPill.querySelector('.status-dot-pulse');
+
+    if (isOpen) {
+      statusText.textContent = `Abierto Ahora · Cierra ${closeTimeStr}`;
+      statusPill.classList.remove('status-closed');
+      if (dot) dot.style.backgroundColor = '#10b981';
     } else {
-      statusText.textContent = `Cerrado · Abre Lun ${openHour}:00 AM`;
-      const dot = statusPill.querySelector('.status-dot-pulse');
-      if (dot) {
-        dot.style.backgroundColor = '#f59e0b';
+      statusPill.classList.add('status-closed');
+      if (dot) dot.style.backgroundColor = '#f59e0b';
+
+      if (isWeekday) {
+        if (currentMinutes < openMinutes) {
+          statusText.textContent = `Cerrado · Abre hoy a las ${openTimeStr}`;
+        } else if (dayNum === 5) {
+          statusText.textContent = `Cerrado · Abre el Lunes a las ${openTimeStr}`;
+        } else {
+          statusText.textContent = `Cerrado · Abre mañana a las ${openTimeStr}`;
+        }
+      } else {
+        statusText.textContent = `Cerrado · Abre el Lunes a las ${openTimeStr}`;
       }
     }
   } catch (e) {
-    statusText.textContent = 'Abierto · Lun a Vie 8:00 - 17:00';
+    statusText.textContent = 'Abierto · Lun a Vie 8:00 AM - 5:00 PM';
   }
 }
 
