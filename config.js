@@ -106,7 +106,7 @@ const construyConfig = {
     {
       id: 'map',
       name: 'Ubicación',
-      url: '#mapa-seccion',
+      url: 'https://maps.google.com/?q=Materiales+ConstruY+Caracas',
       icon: 'map',
       enabled: true,
     },
