@@ -65,7 +65,7 @@ const construyConfig = {
     contact: {
       phone: '+58 424 280 3167',
       phoneClean: '+584242803167',
-      phoneAlt: '0424 280 3167',
+      phoneAlt: '',
       email: 'materialesconstruy@gmail.com',
       whatsappMessage: 'Hola ConstruY, quiero cotizar mi proyecto.',
     }
