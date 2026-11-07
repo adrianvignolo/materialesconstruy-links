@@ -192,17 +192,6 @@ const construyConfig = {
       target: '_blank',
     },
     {
-      title: 'Ficha Técnica & Rendimiento',
-      subtitle: 'Propiedades mecánicas, cubrimiento m² y tiempos de secado',
-      url: 'https://materialesconstruy.com/construy/ficha-tecnica',
-      badge: 'Especificaciones',
-      badgeType: 'default',
-      cardType: 'default',
-      icon: 'file',
-      enabled: true,
-      target: '_blank',
-    },
-    {
       title: 'Deja tu opinión',
       subtitle: 'Califícanos en Google y comparte tu experiencia con nosotros',
       url: 'https://maps.google.com/?q=Materiales+ConstruY+Caracas',
