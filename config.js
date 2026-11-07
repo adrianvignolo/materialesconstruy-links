@@ -136,6 +136,17 @@ const construyConfig = {
   // ==========================================================================
   links: [
     {
+      title: 'Cotizar por WhatsApp',
+      subtitle: '',
+      url: 'https://wa.me/584242803167?text=Hola%20ConstruY%2C%20quiero%20cotizar%20mi%20proyecto.',
+      badge: 'Chat Directo',
+      badgeType: 'whatsapp',
+      cardType: 'whatsapp',
+      icon: 'whatsapp',
+      enabled: true,
+      target: '_blank',
+    },
+    {
       title: 'Tienda Online Oficial',
       subtitle: 'Explora y compra pinturas, esmaltes y presentaciones con delivery',
       url: 'https://materialesconstruy.com',
@@ -166,17 +177,6 @@ const construyConfig = {
       cardType: 'default',
       icon: 'palette',
       showColorDots: true,
-      enabled: true,
-      target: '_blank',
-    },
-    {
-      title: 'Cotizar por WhatsApp',
-      subtitle: 'Asesoría personalizada de ingeniería y presupuestos al instante',
-      url: 'https://wa.me/584242803167?text=Hola%20ConstruY%2C%20quiero%20cotizar%20mi%20proyecto.',
-      badge: 'Chat Directo',
-      badgeType: 'whatsapp',
-      cardType: 'whatsapp',
-      icon: 'whatsapp',
       enabled: true,
       target: '_blank',
     },
