@@ -48,7 +48,7 @@
   --whatsapp-green: #25D366;
   --whatsapp-hover: #20bd5a;
 
-  --bg-page: #f8fafb;
+  --bg-page: #e8e8e8;
   --surface-card: #ffffff;
   --surface-muted: #f1f5f9;
   --border-light: rgba(0, 41, 82, 0.12);
@@ -105,17 +105,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Trama geométrica industrial idéntica a materialesconstruy.com */
+/* Patrón de fondo desactivado: reemplazado por fondo plano #e8e8e8 */
 .bg-grid-pattern {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.035;
-  background-image: 
-    linear-gradient(var(--primary-500) 1px, transparent 1px),
-    linear-gradient(90deg, var(--primary-500) 1px, transparent 1px);
-  background-size: 32px 32px;
+  display: none;
 }
 
 /* Franja superior de marca */
