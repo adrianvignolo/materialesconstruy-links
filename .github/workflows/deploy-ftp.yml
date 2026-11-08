@@ -3,7 +3,7 @@ name: Deploy via FTP to Production
 on:
   push:
     branches:
-      - main
+      - prod
   workflow_dispatch:
 
 concurrency:
