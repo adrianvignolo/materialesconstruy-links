@@ -243,6 +243,8 @@ function renderLinks(links, analyticsConfig) {
       `;
     }
 
+    const subtitleHtml = link.subtitle ? `<p class="link-subtitle">${formatSubtitle(link.subtitle)}</p>` : '';
+
     card.innerHTML = `
       <div class="link-icon-box">
         ${getIconSvg(link.icon)}
@@ -252,7 +254,7 @@ function renderLinks(links, analyticsConfig) {
           <h2 class="link-title">${escapeHtml(link.title)}</h2>
           ${link.badge ? `<span class="${badgeClass}">${escapeHtml(link.badge)}</span>` : ''}
         </div>
-        <p class="link-subtitle">${formatSubtitle(link.subtitle || '')}</p>
+        ${subtitleHtml}
         ${swatchHtml}
       </div>
       <div class="link-arrow">
